@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounce, debounceTime } from 'rxjs/operators';
 
 @Component({
 	selector    : 'tabela-paginacao',
@@ -12,9 +14,9 @@ export class PaginacaoComponent implements OnInit {
 	public static readonly TOTAL_REGISTROS_PADRAO  : number = 0;
 	public static readonly ADJACENTES_PADRAO       : number = 2;
 
-	@Input()  qtdPorPagina    : number;
-	@Input()  totalRegistros  : number;
-	@Input()  qtdAdjacentes   : number;
+	@Input()  linhasPorPagina    : number;
+	@Input()  totalRegistros     : number;
+	@Input()  qtdAdjacentes      : number;
 
 	@Output() onPaginate      = new EventEmitter<number>();
 
@@ -26,12 +28,12 @@ export class PaginacaoComponent implements OnInit {
 	constructor(private route: ActivatedRoute) {}
 
 	ngOnInit() {
-		this.qtdAdjacentes  = this.qtdAdjacentes  || PaginacaoComponent.ADJACENTES_PADRAO;
-		this.qtdPorPagina   = this.qtdPorPagina   || PaginacaoComponent.TOTAL_PAGINAS_PADRAO;
-		this.totalRegistros = this.totalRegistros || PaginacaoComponent.TOTAL_REGISTROS_PADRAO;
-
+		this.qtdAdjacentes      = this.qtdAdjacentes    || PaginacaoComponent.ADJACENTES_PADRAO;
+		this.linhasPorPagina    = this.linhasPorPagina  || PaginacaoComponent.TOTAL_PAGINAS_PADRAO;
+		this.totalRegistros     = this.totalRegistros   || PaginacaoComponent.TOTAL_REGISTROS_PADRAO;
+		
 		this.pagina         = +this.route.snapshot.queryParams['pagina'] || PaginacaoComponent.PAGINAS_PADRAO;
-		this.qtdPaginas     = Math.ceil(this.totalRegistros / this.qtdPorPagina);
+		this.qtdPaginas     = Math.ceil(this.totalRegistros / this.linhasPorPagina);
 		
 		this.gerarLinks();
 	}

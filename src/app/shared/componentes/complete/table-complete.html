@@ -1,7 +1,11 @@
 <form>
   
     <div class="form-group form-inline">
-        Pesquisa: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+        <div class="input-group">
+              Pesquisa: 
+              <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+              <div class="input-group-addon"><i class="fa fa-search"></i></div>   
+        </div>      
         <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
     </div>
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { USUARIOS } from '../usuarios/DB/usuario.db' 
 
 @Component({
 	selector: 'alunos',
@@ -36,9 +37,21 @@ export class AlunoComponent {
 	}
 	
 	createDB (){
+		
+		let nome = this.removerAcentos("Fábrîca");
+		console.log(nome);
+
+		console.log(USUARIOS.length)
+		console.log(USUARIOS)
+
+
 		for(let d = 1; d < 200; d++){
 			this.alunosTotal.push( { id:d, nome:"Fagner"} )		
 		}
+	}
+
+	removerAcentos( s : string ) {
+		 return s.normalize('NFD').replace(/[\u0300-\u036f|\u00b4|\u0060|\u005e|\u007e]/g, "") 
 	}
 
 }
