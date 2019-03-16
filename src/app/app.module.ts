@@ -7,6 +7,7 @@ import { DataTableModule } from './shared/componentes/data-table/data-table.modu
 import { CompleteModule } from './shared/componentes/complete/complete.module';
 import { UsuarioModule } from './pages/usuarios/usuario.module';
 import { UsuarioADModule } from './pages/usuarios/usuarioADs/usuarioAD.module';
+import { TypeaheadModule } from './pages/typeahead/typeahead.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UsuarioADModule } from './pages/usuarios/usuarioADs/usuarioAD.module';
     DataTableModule,
     CompleteModule,
     UsuarioModule,
-    UsuarioADModule
+    UsuarioADModule,
+    TypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

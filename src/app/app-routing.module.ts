@@ -5,14 +5,17 @@ import { DataTableComponent } from './shared/componentes/data-table/data-table.c
 import { NgbdTableComplete } from './shared/componentes/complete/table-complete';
 import { UsuarioController } from './pages/usuarios/usuario/usuario.controller';
 import { UsuarioADController } from './pages/usuarios/usuarioADs/usuarioAD/usuarioAD.controller';
+import { TypeaheadComponent } from './pages/typeahead/components/typeahead.component';
 
 const routes: Routes = [
 
-    { path        : '', pathMatch   : 'full',  redirectTo  : 'usuarioAD' },
+    { path        : '', pathMatch   : 'full',  redirectTo  : 'typeahead' },
     {path: 'table' , component : DataTableComponent},
     {path: 'complete' , component : NgbdTableComplete},
     {path: 'usuario' , component : UsuarioController},
-    {path: 'usuarioAD' , component : UsuarioADController}
+    {path: 'usuarioAD' , component : UsuarioADController},
+    {path: 'typeahead' , component : TypeaheadComponent}
+    
     
 
 ];
