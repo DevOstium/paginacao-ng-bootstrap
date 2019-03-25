@@ -54,7 +54,6 @@ export class TypeaheadComponent  implements OnInit {
         if(usuario) {
             return usuario.nome;
         }
-        return "Fagn";
     }                          
 
     loadTable( usuario = '' ){

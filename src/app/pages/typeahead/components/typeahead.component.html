@@ -1,18 +1,18 @@
-<h1>TypeAhead</h1>
+<h1>Pesquisa Usuário</h1>
 
 
 <form class="example-form" [formGroup]='usersForm'>
      
     <mat-form-field class="example-full-width">
           <input matInput 
-                 placeholder="Choose a user" 
+                 placeholder="Busca por usuário" 
                  [matAutocomplete]="auto" 
                  formControlName='userInput'
                  (keyup)="pesquisa.next($event.target.value)"
                  >
     </mat-form-field>
 
-    <span>Your choice is: {{usersForm.get('userInput').value | json}}</span>
+    <span>Pesquisa: {{usersForm.get('userInput').value | json}}</span>
   
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
 
@@ -27,20 +27,24 @@
 
     </mat-autocomplete>
 
+    <div class="card">
+        <div class="card-body">
+            <table class="lessons-table mat-elevation-z7 table-stats table table-striped table-bordered" 
+                   *ngIf="(table$ | async) as items">
 
-    <table class="lessons-table mat-elevation-z7" *ngIf="(table$ | async) as items">
+                <thead>
+                    <th>#</th>
+                    <th>Nome</th>
+                </thead>
 
-        <thead>
-            <th>#</th>
-            <th>Description</th>
-            <th>Duration</th>
-        </thead>
+                <tr *ngFor="let i of items">
+                    <td class="seqno-cell">{{i.id}}</td>
+                    <td class="description-cell">{{i.nome}}</td>
+                </tr>
 
-        <tr *ngFor="let i of items">
-            <td class="seqno-cell">{{i.id}}</td>
-            <td class="description-cell">{{i.nome}}</td>
-        </tr>
+            </table>
 
-    </table>
+        </div>
+    </div>
 
 </form>

@@ -1,5 +1,8 @@
 export class UsuarioTypeahead {
-    constructor (public id : number, public nome: string) { }
+    constructor (
+                    public id : number, 
+                    public nome: string
+                ) { }
 }
 
 export interface UsuarioResponse {

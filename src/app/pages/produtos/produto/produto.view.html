@@ -1,0 +1,26 @@
+<h1>Produtos</h1>
+
+<input-pesquisa  (eventPesquisa)="buscaProdutos($event)" [filtro]="filtro" ></input-pesquisa>
+
+
+<form [formGroup]="categoriasForm" class="form mt-4" (submit)="gravar()">
+        <table>
+            <thead>
+                <th><input type="checkbox" (click)="checkAll()" ></th>
+                <th>Categorias</th>
+            </thead>
+            <tbody >
+                    <tr id={{i.id}} *ngFor="let i of categorias">
+                        <td><input formControlName="enable" 
+                                   type="checkbox" 
+                                   [checked]="checked" 
+                                  >
+                        </td>
+                        <td><input formControlName="nome" type="text" value={{i.nome}}> </td>
+                    </tr>  
+            </tbody>
+
+            <button class="btn btn-primary btn-block">Vincular</button>
+
+        </table>
+</form>

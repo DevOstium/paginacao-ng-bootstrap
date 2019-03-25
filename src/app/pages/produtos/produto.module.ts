@@ -5,14 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatButtonModule, MatProgressSpinnerModule} from '@angular/material';
 
-import { TypeaheadComponent } from './components/typeahead.component';
-import { SearchModule } from '../usuarios/search/search.module';
-import { TypeaheadService } from './services/typeahead.service';
-
+import { ProdutoController } from './produto/produto.controller';
+import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { ProdutoService } from './services/produto.service';
 
 @NgModule({
-    declarations: [TypeaheadComponent],
-    exports: [TypeaheadComponent],
+    declarations : [ProdutoController, PesquisaComponent],
+    exports: [ProdutoController ],
     imports: [
         CommonModule,
         BrowserAnimationsModule,
@@ -24,9 +23,7 @@ import { TypeaheadService } from './services/typeahead.service';
         MatFormFieldModule,
         MatButtonModule,
         MatProgressSpinnerModule,
-        SearchModule
     ],
-    providers: [TypeaheadService]
+    providers : [ProdutoService]
 })
-
-export class TypeaheadModule {}
+export class ProdutoModule{}

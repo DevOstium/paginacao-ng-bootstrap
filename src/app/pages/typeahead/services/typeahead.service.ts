@@ -17,9 +17,8 @@ export class TypeaheadService {
         return this.http.get<UsuarioResponse[]>(`${API}/usuarios/paginacao/?nome=${param.toLowerCase()}`)  
     }
 
-
     resultTable( paramTable = '') : Observable<UsuarioTypeahead[]> {
-        return this.http.get<UsuarioTypeahead[]>(`${API}/usuarios/paginacao/?nome=${paramTable.toLowerCase()}`).pipe( map ( resp => resp['content']));
+        return this.http.get<UsuarioTypeahead[]>(`${API}/usuarios/paginacao/?nome=${paramTable.toLowerCase()}`)
+                        .pipe( map ( resp => resp['content']));
     }
-
 }
